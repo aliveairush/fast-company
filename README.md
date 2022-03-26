@@ -1,5 +1,5 @@
 # App is available on github pages 
-You can check it out here [https://aliveairush.github.io/fast-company/](http://localhost:3000)
+You can check it out here [https://aliveairush.github.io/fast-company/](https://aliveairush.github.io/fast-company/)
 
 # Getting Started with Create React App
 
