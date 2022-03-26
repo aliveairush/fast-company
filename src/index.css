@@ -1,5 +1,6 @@
 *, :after, :before {
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -14,9 +15,4 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-/* Costuming some default bootstrap css*/
-.badge + .badge {
-    margin-left: 0.25rem;
 }

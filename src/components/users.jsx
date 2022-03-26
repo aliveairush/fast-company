@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import api from "../api";
+import Badge from "./badge";
 
-function Users() {
+const Users = () => {
 
   const [users, setUsers] = useState(api.users.fetchAll);
 
   const handleDelete = (userId) => setUsers(users.filter(user => user._id !== userId));
 
   const renderPhrase = (number) => {
-    if (number === 0) return <h3><span className="badge bg-primary bg-danger">Никто с тобой не тусанет</span></h3>
+    if (number === 0) return <h3><span className="badge bg-primary bg-danger mt-4 ">Никто с тобой не тусанет</span></h3>
 
     const wordForms = ['Человек', 'Человека']
 
@@ -18,31 +19,34 @@ function Users() {
     if (remainder >= 2 && remainder <= 4) word = wordForms[1]; // if remainder is 2 then its  2, 12, 22,... and correct lexical form is plural
     if (number >= 12 && number <= 14) word = wordForms[0]; // but even if remainder 2,3 or 4 there is exception with numbers 12,13,14. And correct lexical form is single
 
-    return <h3><span className="badge bg-primary">{number} {word} тусанет с тобой сегодня</span></h3>
+    return <h3><span className="badge bg-primary mt-4 ">{number} {word} тусанет с тобой сегодня</span></h3>
   }
 
-  return users.length === 0 ? renderPhrase(users.length) : <>
-    {renderPhrase(users.length)}
-
-    <table className="table">
-      <thead>
+  const renderUsersTable = (userList) => {
+    return <table className={`table table-hover mt-4 align-middle`}>
+      <thead className="table-dark">
       <tr>
-        {['Имя', 'Качества','Профессия','Встретился, раз','Оценка',''].map(colName => <th key={colName} scope="col">{colName}</th>)}
+        {['Имя', 'Качества', 'Профессия', 'Встретился, раз', 'Оценка', ''].map(colName => <th className="align-middle"
+                                                                                              key={colName}
+                                                                                              scope="col">{colName}</th>)}
       </tr>
       </thead>
       <tbody>
-      {users.map(user => <tr key={user._id}>
+      {userList.map(user => <tr key={user._id}>
         <td>{user.name}</td>
-        <td>{user.qualities.map(quality => <span key={quality._id}
-                                                 className={`badge bg-secondary bg-${quality.color}`}>{quality.name}</span>)}</td>
+        <td>{user.qualities.map(quality => <Badge key={quality._id} name={quality.name} color={quality.color}/>)}</td>
         <td>{user.profession.name}</td>
         <td>{user.completedMeetings}</td>
         <td>{user.rate}</td>
-        <td><button className="btn btn-danger" onClick={() => handleDelete(user._id)}>Delete</button></td>
+        <td>
+          <button className="btn btn-danger" onClick={() => handleDelete(user._id)}>Delete</button>
+        </td>
       </tr>)}
       </tbody>
     </table>
-  </>
+  }
+
+  return <div className='container'>{renderPhrase(users.length)} {users.length !== 0 && renderUsersTable(users)}</div>
 }
 
 export default Users;
