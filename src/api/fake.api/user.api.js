@@ -125,6 +125,95 @@ const users = [
         rate: 5,
         bookmark: false
     },
+    {
+        _id: "1111",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },    {
+        _id: "2222",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "333",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "444",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "555",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "666",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "7777",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "888",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "9999",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "10",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },,    {
+        _id: "11",
+        name: "Брэд Питт",
+        profession: professions.actor,
+        qualities: [qualities.handsome],
+        completedMeetings: 434,
+        rate: 5,
+        bookmark: false
+    },
 ]
 export function fetchAll() {
     return users
