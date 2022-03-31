@@ -1,15 +1,15 @@
 import React from 'react';
-import styles from './badge.module.scss'
+import styles from './quality.module.css'
 
-const Badge = ({color, name }) => {
+const Quality = ({color, name }) => {
   return (
     <span className={`badge bg-secondary flex-row gap-5 bg-${color} ${styles.badge}`}>{name}</span>
   );
 }
 
-Badge.defaultProps = {
+Quality.defaultProps = {
   color: 'primary',
   name: ""
 }
 
-export default Badge;
+export default Quality;
