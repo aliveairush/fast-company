@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './quality.module.css'
 
-const Quality = ({color, name }) => {
+const Quality = ({color, name, id }) => {
   return (
-    <span className={`badge bg-secondary flex-row gap-5 bg-${color} ${styles.badge}`}>{name}</span>
+    <span  key={id} className={`badge flex-row gap-5 bg-${color} ${styles.badge}`}>{name}</span>
   );
 }
 

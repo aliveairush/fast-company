@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchStatus = ({length}) => {
 
-  if (length === 0) return <h3><span className="badge bg-primary bg-danger mt-4 ">Никто с тобой не тусанет</span></h3>
+  if (!length) return <h3><span className="badge bg-primary bg-danger mt-4 ">Никто с тобой не тусанет</span></h3>
 
   const wordForms = ['Человек', 'Человека']
   let word = wordForms[0];
