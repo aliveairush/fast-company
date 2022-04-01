@@ -17,7 +17,7 @@ const Users = ({users, ...rest}) => {
       <tbody>
       {userList.map(user => <tr key={user._id}>
         <td>{user.name}</td>
-        <td>{user.qualities.map(quality => <Quality key={quality._id} name={quality.name} color={quality.color}/>)}</td>
+        <td>{user.qualities.map(quality => <Quality {...quality} />)}</td>
         <td>{user.profession.name}</td>
         <td>{user.completedMeetings}</td>
         <td>{user.rate}</td>
@@ -29,7 +29,7 @@ const Users = ({users, ...rest}) => {
   }
 
   return <div className='container'><SearchStatus
-    length={users.length}/> {users.length !== 0 && renderUsersTable(users)}</div>
+    length={users.length}/> {users.length && renderUsersTable(users)}</div>
 }
 
 export default Users;
