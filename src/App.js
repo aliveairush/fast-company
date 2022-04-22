@@ -14,7 +14,7 @@ const App = () => {
       .then(data => setProfessions(data));
   });
   
-  const filteredUsers = selectedProf ? users.filter(user => user.profession === selectedProf) : users;
+  const filteredUsers = selectedProf ? users.filter(user => user.profession._id === selectedProf._id) : users;
 
   const handleProfessionSelect = (item) => setSelectedProf(item);
 
