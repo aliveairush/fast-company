@@ -45,7 +45,7 @@ const Users = ({users, ...rest}) => {
   };
 
   return (
-    <div className="container">
+    <div className="p-4">
       <SearchStatus length={users.length}/>
       {users.length ? renderUsersTable(usersCrop) : null}
       {users.length
