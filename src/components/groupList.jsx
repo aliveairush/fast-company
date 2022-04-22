@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 const GroupList = ({items, valueProperty, contentProperty, onItemSelect, selectedItem}) => {
 
-  
   const isActiveItem = (item) => item === selectedItem ? " active " : "";
 
   return (
@@ -24,7 +23,7 @@ GroupList.defaultProps = {
 };
 
 GroupList.propTypes = {
-  items: PropTypes.object.isRequired,
+  items: PropTypes.oneOfType([PropTypes.object, PropTypes.array]).isRequired,
   valueProperty: PropTypes.string.isRequired,
   contentProperty: PropTypes.string.isRequired,
   onItemSelect: PropTypes.func.isRequired,
