@@ -1,15 +1,31 @@
 import React, {useState} from "react";
-import Quality from "./quality";
 import SearchStatus from "./searchStatus";
-import Bookmark from "./bookmark";
 import Pagination from "./pagination";
 import paginate from "../utils/paginate";
 import PropTypes from "prop-types";
+import UsersTable from "./usersTable";
+import Bookmark from "./bookmark";
+import QualitiesList from "./qualitiesList";
 
-const Users = ({users, ...rest}) => {
-  const columns = ["Имя", "Качества", "Профессия", "Встретился, раз", "Оценка", "Избранное", ""];
+const Users = ({users, onSort, selectedSort, ...rest}) => {
+  const columns = [
+    {property: "name", title: "Имя"},
+    {title: "Качества",
+      component: (user) =>  <QualitiesList qualities={user.qualities}/>
+    },
+    {property: "profession.name", title: "Профессия"},
+    {property: "completedMeetings", title: "Встретился, раз"},
+    {property: "rate", title: "Оценка"},
+    {property: "bookmark", title: "Избранное", 
+      component: () => <Bookmark/>
+    },
+    {component: (user) => 
+      <button className="btn btn-danger"
+        onClick={() => rest.onDelete(user._id)} >Delete
+      </button>}
+  ];
 
-  const pageSize = 5;
+  const pageSize = 10;
   const [currentPage, setCurrentPage] = useState(1);
   const usersCrop = paginate(users, currentPage, pageSize);
 
@@ -20,34 +36,10 @@ const Users = ({users, ...rest}) => {
     handlePageChange(currentPage - 1);
   }
 
-  const renderUsersTable = (userList) => {
-    return <table className={`table table-hover mt-4 align-middle`}>
-      <thead className="table-dark">
-        <tr>
-          {columns.map(column => <th className="align-middle" key={column} scope="col">{column}</th>)}
-        </tr>
-      </thead>
-      <tbody>
-        {userList.map(user =>
-          <tr key={user._id.toString()}>
-            <td>{user.name}</td>
-            <td>{user.qualities.map(quality => <Quality key={quality._id} {...quality} />)}</td>
-            <td>{user.profession.name}</td>
-            <td>{user.completedMeetings}</td>
-            <td>{user.rate}</td>
-            <td><Bookmark/></td>
-            <td>
-              <button className="btn btn-danger" onClick={() => rest.onDelete(user._id)}>Delete</button>
-            </td>
-          </tr>)}
-      </tbody>
-    </table>;
-  };
-
   return (
     <div className="p-4">
       <SearchStatus length={users.length}/>
-      {users.length ? renderUsersTable(usersCrop) : null}
+      {users.length ? <UsersTable selectedSort={selectedSort} data={usersCrop} {...rest} onSort={onSort} columns={columns} /> : null}
       {users.length
         ? <Pagination itemsCount={users.length} pageSize={pageSize} currentPage={currentPage}
           onPageChange={handlePageChange}/>
@@ -64,7 +56,9 @@ Users.propTypes = {
     completedMeetings: PropTypes.number.isRequired,
     rate: PropTypes.number.isRequired
   })).isRequired,
-  onDelete: PropTypes.func.isRequired
+  onDelete: PropTypes.func.isRequired,
+  onSort: PropTypes.func,
+  selectedSort: PropTypes.object
 };
 
 export default Users;
