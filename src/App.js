@@ -2,12 +2,14 @@ import React, {useEffect, useState} from "react";
 import api from "./api";
 import Users from "./components/users";
 import GroupList from "./components/groupList";
+import _ from "lodash";
 
 const App = () => {
   const [users, setUsers] = useState(api.users.fetchAll);
 
   const [professions, setProfessions] = useState();
   const [selectedProf, setSelectedProf] = useState();
+  const [sortBy, setSortBy] = useState({iter: "name", order: "asc"});
 
   useEffect(() => {
     api.professions.fetchAll()
@@ -15,10 +17,13 @@ const App = () => {
   });
   
   const filteredUsers = selectedProf ? users.filter(user => user.profession._id === selectedProf._id) : users;
+  const sortedUsers = _.orderBy(filteredUsers, [sortBy.iter], [sortBy.order]);
 
   const handleProfessionSelect = (item) => setSelectedProf(item);
 
   const handleDelete = (userId) => setUsers(users.filter(user => user._id !== userId));
+  
+  const handleSort = (sortBy) => setSortBy(sortBy);
 
   return (
     <div className="container d-flex">
@@ -32,7 +37,7 @@ const App = () => {
       </div>
       
       <div className="flex-grow-1 ">
-        <Users users={filteredUsers} onDelete={handleDelete}/>
+        <Users users={sortedUsers} onSort={handleSort} selectedSort={sortBy} onDelete={handleDelete}/>
       </div>
     </div>
   );
