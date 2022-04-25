@@ -8,7 +8,7 @@ import Bookmark from "./bookmark";
 import paginate from "../utils/paginate";
 import Pagination from "./pagination";
 import SearchStatus from "./searchStatus";
-const UsersTable = ({data, onSort, onDelete, selectedSort}) => {
+const UsersTable = ({data, onSort, onBookmarkClick, onDelete, selectedSort}) => {
 
   const pageSize = 4;
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +21,6 @@ const UsersTable = ({data, onSort, onDelete, selectedSort}) => {
     handlePageChange(currentPage - 1);
   }
 
-
   const columns = [
     {property: "name", title: "Имя"},
     {title: "Качества",
@@ -31,7 +30,7 @@ const UsersTable = ({data, onSort, onDelete, selectedSort}) => {
     {property: "completedMeetings", title: "Встретился, раз"},
     {property: "rate", title: "Оценка"},
     {property: "bookmark", title: "Избранное",
-      component: () => <Bookmark/>
+      component: (user) => <Bookmark value={user.bookmark} onClick={() => onBookmarkClick(user)} />
     },
     {component: (user) =>
       <button className="btn btn-danger"
@@ -62,6 +61,7 @@ UsersTable.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onSort: PropTypes.func,
   selectedSort: PropTypes.object,
+  onBookmarkClick: PropTypes.func,
 };
 
 export default UsersTable;
