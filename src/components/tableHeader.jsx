@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {ReactComponent as CaretDownIcon} from "../assets/icons/chevron-down.svg";
+import {ReactComponent as CaretUpIcon} from "../assets/icons/chevron-up.svg";
 
 const TableHeader = ({onSort, selectedSort, columns}) => {
 
@@ -8,6 +10,12 @@ const TableHeader = ({onSort, selectedSort, columns}) => {
       onSort({...selectedSort, order: selectedSort.order === "asc"? "desc" : "asc"});
     } else {
       onSort({iter: property, order: "asc"});
+    }
+  };
+  
+  const renderCaret = (column) => {
+    if (column.property === selectedSort.iter) {
+      return selectedSort.order === "asc" ? <CaretUpIcon/> : <CaretDownIcon/>;
     }
   };
 
@@ -25,7 +33,10 @@ const TableHeader = ({onSort, selectedSort, columns}) => {
             className="align-middle"
             key={index}
             scope="col">
+
             {column.title}
+
+            {renderCaret(column)}
           </th>))}
       </tr>
     </thead>
