@@ -33,6 +33,17 @@ const UsersForm = () => {
 
   const handleSort = (sortBy) => setSortBy(sortBy);
 
+
+  const handleBookmarkClick = (user) => {
+    const newUsers = users.map(u => {
+      if (u._id === user._id) {
+        u.bookmark = !u.bookmark;
+      }
+      return u;
+    });
+    setUsers(newUsers);
+  };
+
   // When users and profession ready show page
   return (sortedUsers && professions ?
     <div className="container d-flex">
@@ -45,6 +56,7 @@ const UsersForm = () => {
         <div className="p-4">
           <UsersTable
             data={sortedUsers}
+            onBookmarkClick={handleBookmarkClick}
             selectedSort={sortBy}
             onDelete={handleDelete}
             onSort={handleSort}
