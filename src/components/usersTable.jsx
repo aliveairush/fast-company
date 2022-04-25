@@ -8,6 +8,7 @@ import Bookmark from "./bookmark";
 import paginate from "../utils/paginate";
 import Pagination from "./pagination";
 import SearchStatus from "./searchStatus";
+
 const UsersTable = ({data, onSort, onBookmarkClick, onDelete, selectedSort}) => {
 
   const pageSize = 4;
