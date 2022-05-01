@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/fast-company/static/css/main.04e660f9.css",
-    "main.js": "/fast-company/static/js/main.75f874de.js",
+    "main.js": "/fast-company/static/js/main.51971e29.js",
     "static/js/787.4d212c3f.chunk.js": "/fast-company/static/js/787.4d212c3f.chunk.js",
     "index.html": "/fast-company/index.html",
     "static/media/chevron-down.svg": "/fast-company/static/media/chevron-down.4143c735b2173f3020431a69b1e9f0cb.svg",
@@ -9,11 +9,11 @@
     "static/media/bookmark-unchecked.svg": "/fast-company/static/media/bookmark-unchecked.502c9eff1af7520979c4c9f38a425c3d.svg",
     "static/media/bookmark-checked.svg": "/fast-company/static/media/bookmark-checked.41b4b23ab29d75bfa71de074ffdd4ad2.svg",
     "main.04e660f9.css.map": "/fast-company/static/css/main.04e660f9.css.map",
-    "main.75f874de.js.map": "/fast-company/static/js/main.75f874de.js.map",
+    "main.51971e29.js.map": "/fast-company/static/js/main.51971e29.js.map",
     "787.4d212c3f.chunk.js.map": "/fast-company/static/js/787.4d212c3f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.04e660f9.css",
-    "static/js/main.75f874de.js"
+    "static/js/main.51971e29.js"
   ]
 }
