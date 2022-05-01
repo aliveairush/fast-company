@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from "react";
-import UsersTable from "../components/usersTable";
-import GroupList from "../components/groupList";
-import api from "../api";
+import UsersTable from "../../components/usersTable";
+import GroupList from "../../components/groupList";
+import api from "../../api";
 import _ from "lodash";
 
-const UsersForm = () => {
+const UsersListPage = () => {
   
-  const [users, setUsers] = useState(api.users.fetchAll);
+  const [users, setUsers] = useState();
 
   // Array of professions
   const [professions, setProfessions] = useState();
@@ -18,9 +18,13 @@ const UsersForm = () => {
 
   // Setting all users 
   useEffect(() => {
+    
+    api.users.fetchAll()
+      .then((data) => setUsers(data));
+    
     api.professions.fetchAll()
       .then(data => setProfessions(data));
-  });
+  }, []);
 
   // Filtering users by profession
   const filteredUsers = selectedProf ? users.filter(user => user.profession._id === selectedProf._id) : users;
@@ -69,4 +73,4 @@ const UsersForm = () => {
   );
 };
 
-export default UsersForm;
+export default UsersListPage;

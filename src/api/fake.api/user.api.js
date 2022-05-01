@@ -120,6 +120,21 @@ const users = [
     bookmark: false
   }
 ];
-export function fetchAll() {
-  return users;
-}
+
+export const getById = (id) => {
+  return new Promise(resolve => {
+    window.setTimeout(()=> {
+      resolve(users.find(u => u._id.toString() === id));
+    }, 1000);
+  });
+};
+
+export const fetchAll = () => {
+  console.log("Fetching data about users");
+
+  return new Promise(resolve => {
+    resolve(users);
+  }, 1000);
+};
+
+

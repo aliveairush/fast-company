@@ -8,6 +8,7 @@ import Bookmark from "./bookmark";
 import paginate from "../utils/paginate";
 import Pagination from "./pagination";
 import SearchStatus from "./searchStatus";
+import {Link} from "react-router-dom";
 
 const UsersTable = ({data, onSort, onBookmarkClick, onDelete, selectedSort}) => {
 
@@ -23,7 +24,7 @@ const UsersTable = ({data, onSort, onBookmarkClick, onDelete, selectedSort}) => 
   }
 
   const columns = [
-    {property: "name", title: "Имя"},
+    {property: "name", title: "Имя", component: (user) =>  <Link to={`/users/${user._id}`}>{user.name}</Link>},
     {title: "Качества",
       component: (user) =>  <QualitiesList qualities={user.qualities}/>
     },
